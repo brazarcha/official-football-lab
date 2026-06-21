@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足彩 · 从看懂到玩懂 | 场景导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f7fb;
+            color: #1e1e2a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图导航区 */
+        .hero-nav {
+            background: #0d0d1a;
+            padding: 1rem 2rem 3rem 2rem;
+            border-bottom: 4px solid #f3c555;
+        }
+
+        .nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #eceef5;
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-icon {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #f3c555;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 1.1rem;
+            color: #0d0d1a;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #b0b7cf;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #f3c555;
+        }
+
+        .hero-message {
+            max-width: 1120px;
+            margin: 2.5rem auto 0 auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-message h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #f1f3fa;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-message p {
+            color: #9ca3c0;
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .hero-message .hl {
+            color: #f3c555;
+        }
+
+        /* 浅色正文主容器 */
+        .main-content {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem 2rem 3.5rem 2rem;
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            border-radius: 16px;
+            margin-top: -1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: #1e1e2a;
+            border-left: 6px solid #f3c555;
+            padding-left: 1rem;
+        }
+
+        .section-sub {
+            color: #4a4a5e;
+            margin-bottom: 1.8rem;
+            font-size: 1rem;
+        }
+
+        /* 三个场景模块 */
+        .scene-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        .scene-card {
+            flex: 1 1 200px;
+            min-width: 180px;
+            background: #f9faff;
+            border-radius: 20px;
+            padding: 1.6rem 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #ecedf5;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border-color: #f3c555;
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .scene-card p {
+            color: #3d3d50;
+            font-size: 0.95rem;
+        }
+
+        .scene-card .badge {
+            display: inline-block;
+            background: #edeeff;
+            color: #3b3b5c;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 2px 10px;
+            border-radius: 30px;
+            margin-top: 0.8rem;
+        }
+
+        /* 常见说明 / 摘要 */
+        .faq-taste {
+            margin: 2.5rem 0 1.5rem 0;
+            background: #f7f8fd;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+        }
+
+        .faq-taste h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #1e1e2a;
+        }
+
+        .faq-item {
+            margin: 1.2rem 0;
+            border-bottom: 1px solid #e4e6f0;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item strong {
+            color: #1e1e2a;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            color: #3d3d50;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.15s;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+        }
+
+        .inline-link-highlight {
+            background: #fef9e7;
+            padding: 0.05rem 0.2rem;
+            border-radius: 4px;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e4ed;
+            font-size: 0.85rem;
+            color: #6b6b82;
+            text-align: center;
+        }
+
+        .footnote a {
+            color: #1e2a5e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero-nav {
+                padding: 1rem 1rem 2.5rem 1rem;
+            }
+            .nav-inner {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-message h1 {
+                font-size: 1.8rem;
+            }
+            .main-content {
+                padding: 1.5rem 1rem 2.5rem 1rem;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            .scene-grid {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .faq-taste {
+                padding: 1.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 + 导航 -->
+    <header class="hero-nav">
+        <div class="nav-inner">
+            <div class="logo-area">
+                <span class="logo-icon">⚽</span>
+                <span>赛场笔记</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#intro">了解</a>
+                <a href="#scenes">场景</a>
+                <a href="#faq">常见</a>
+            </nav>
+        </div>
+        <div class="hero-message">
+            <h1>从看懂到玩懂 <span class="hl">足彩</span></h1>
+            <p>不是每个人都是专家，但每个人都可以有自己的节奏。看看许多爱好者如何把<span class="inline-link-highlight"><a href="https://official-football-lottery.com">足彩</a></span>当作周末的一种陪伴——有章法，有乐趣，也有分寸。</p>
+        </div>
+    </header>
+
+    <!-- 正文浅色区 -->
+    <div class="main-content" id="intro">
+
+        <h2 class="section-title">为什么聊这些？</h2>
+        <p class="section-sub">
+            足球的不可预测让它充满魅力，而<span class="inline-link-highlight"><a href="https://official-football-lottery.com">足彩</a></span>，只是这魅力的一个侧面。我们更愿意把它看作一种观赛时的互动——不是博弈，而是对比赛的另一种理解。这里不谈玄学，只聊聊真实的习惯和提醒。
+        </p>
+
+        <!-- 三个场景模块 -->
+        <h2 class="section-title" id="scenes">常见三种场景</h2>
+        <div class="scene-grid">
+            <div class="scene-card">
+                <h3>📋 赛前做功课</h3>
+                <p>花十几分钟看看阵容、伤停、历史交锋，不是为了预测，而是为了让看球更有头绪。很多人把这份习惯当成生活里的小仪式。</p>
+                <span class="badge">投入时间 ≈ 15分钟</span>
+            </div>
+            <div class="scene-card">
+                <h3>📱 和朋友们一起</h3>
+                <p>周末约几个球友，边看直播边聊聊各自的判断，哪怕结果不同也是一种话题。这种社交场景里，<a href="https://official-football-lottery.com">足彩</a>更像一根线，串起笑声和争论。</p>
+                <span class="badge">氛围为主</span>
+            </div>
+            <div class="scene-card">
+                <h3>🧘 保持节奏</h3>
+                <p>不管上一场怎么样，下一场永远是新的。有人习惯设定一个预算，无论输赢都不追加——用纪律代替冲动，反而能更纯粹地享受足球本身。</p>
+                <span class="badge">心态关键词：从容</span>
+            </div>
+        </div>
+
+        <!-- 常见说明 / FAQ 摘要 -->
+        <div class="faq-taste" id="faq">
+            <h4>💬 大家常问的几个事</h4>
+            <div class="faq-item">
+                <strong>不懂数据能参与吗？</strong>
+                <p>当然可以。很多人就是从球队偏好开始的，边看边学。重要的是别把<span class="inline-link-highlight"><a href="https://official-football-lottery.com">足彩</a></span>当成数学题，它更多是关于体验的。</p>
+            </div>
+            <div class="faq-item">
+                <strong>怎么控制自己不冲动？</strong>
+                <p>一个简单的办法：每次只拿出零钱级别的金额，并告诉自己“这部分就是用来买气氛的”。输赢都不影响生活，才能一直保持轻松。</p>
+            </div>
+            <div class="faq-item">
+                <strong>有什么入门建议？</strong>
+                <p>从自己熟悉的联赛开始，不要贪多。先了解基本规则和常见玩法，慢慢形成自己的思路。记住，<a href="https://official-football-lottery.com">足彩</a>不是比赛的全部。</p>
+            </div>
+        </div>
+
+        <!-- 结束语 + 链接自然嵌入 -->
+        <p style="margin-top: 1.8rem; font-size: 1rem; color: #3d3d50; border-left: 3px solid #f3c555; padding-left: 1rem;">
+            无论你是刚刚开始接触，还是已经有自己的固定节奏，希望这里的内容能给你多一个视角。如果你愿意了解更多细节，可以随时看看关于<span class="inline-link-highlight"><a href="https://official-football-lottery.com">足彩</a></span>的那些朴素经验和真实分享。
+        </p>
+
+        <div class="footnote">
+            <span>⚽ 保持热爱，保持理性 · 足球首先是足球</span><br>
+            <span style="opacity: 0.55;">非官方信息页 · 仅作内容参考</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
